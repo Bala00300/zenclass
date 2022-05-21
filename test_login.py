@@ -19,7 +19,7 @@ class Test_001_Login:
         self.driver.get(self.baseURL)
         act_title=self.driver.title
 
-        if act_title=="Your store. Login":
+        if act_title=="Zen class":
             self.logger.info("**** Home page title test passed ****")
             self.driver.close()
             assert True
@@ -41,7 +41,7 @@ class Test_001_Login:
         self.lp.setPassword(self.password)
         self.lp.clickLogin()
         act_title=self.driver.title
-        if act_title=="Dashboard / nopCommerce administration":
+        if act_title=="Zen class":
             self.logger.info("****Login test passed ****")
             self.driver.close()
             assert True

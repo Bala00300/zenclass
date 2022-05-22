@@ -1,17 +1,15 @@
 import pytest
-import time
 from pageObject.LoginPage import LoginPage
 from pageObject.Query import AddQuery
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
-import string
-import random
+
 
 class Test_003_AddQuery:
     baseURL = ReadConfig.getApplicationURL()
     username = ReadConfig.getUseremail()
     password = ReadConfig.getPassword()
-    logger = LogGen.loggen()  # Logger
+    logger = LogGen.loggen()
 
     @pytest.mark.sanity
     @pytest.mark.regression
@@ -29,20 +27,22 @@ class Test_003_AddQuery:
 
         self.logger.info("******* Starting Add Query Test **********")
 
-        self.addcust = AddQuery(self.driver)
-        self.addcust.clickOnStudentsMainMenu()
-        self.addcust.clickOnStudentsQueies()
+        self.add = AddQuery(self.driver)
+        self.add.StudentsMainMenu()
 
-        self.addcust.clickOnCancel()
+        self.add.clickOnStudentsQueries()
+
+        self.add.clickOnCreateQuery()
+
+        self.add.clickOnCancel()
 
         self.logger.info("************* Providing Query info **********")
-
-
-
-        self.addcust.setQuerytitle("Guvi Python AT – 1 &2 Automation Project")
-        self.addcust.setQuerydescription("This is a Project Test Code Running for the Python Automation 1&2 Project Given by mentor Mr. Suman Gangopadhyay")
-
-        self.addcust.clickOnCreate()
+        self.add.selectCategory()
+        self.add.selectSubcategory()
+        self.add.selectLanguage()
+        self.add.setQuerytitle()
+        self.add.setQuerydescription()
+        self.add.clickOnCreate()
 
         self.logger.info("************* Create Query info **********")
 
@@ -55,7 +55,7 @@ class Test_003_AddQuery:
             assert True
             self.logger.info("********* Add Query Test Passed *********")
         else:
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_Query_scr.png")  # Screenshot
+            self.driver.save_screenshot(".\\Screenshot\\" + "test_Query_scr.png")  # Screenshot
             self.logger.error("********* Add Query Test Failed ************")
             assert False
 

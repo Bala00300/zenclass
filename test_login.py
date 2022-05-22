@@ -1,5 +1,4 @@
 import pytest
-from selenium import webdriver
 from pageObject.LoginPage import LoginPage
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
@@ -25,7 +24,7 @@ class Test_001_Login:
             assert True
         else:
             self.logger.error("**** Home page title test failed****")
-            self.driver.save_screenshot(".\\Screenshots\\"+"test_homePageTitle.png")
+            self.driver.save_screenshot(".\\Screenshot\\"+"test_homePageTitle.png")
             self.driver.close()
             assert False
 
@@ -47,7 +46,7 @@ class Test_001_Login:
             assert True
         else:
             self.logger.error("****Login test failed ****")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_homePageTitle.png")
+            self.driver.save_screenshot(".\\Screenshot\\" + "test_homePageTitle.png")
             self.driver.close()
             assert False
 
